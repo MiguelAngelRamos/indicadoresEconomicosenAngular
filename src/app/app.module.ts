@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IndicadoresComponent } from './components/indicadores/indicadores.component';
+import { TableIndicadorComponent } from './components/table-indicador/table-indicador.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    IndicadoresComponent
+    IndicadoresComponent,
+    TableIndicadorComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

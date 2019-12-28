@@ -8,9 +8,9 @@ import { NgForm } from '@angular/forms';
   styles: []
 })
 export class IndicadoresComponent implements OnInit  {
-
   indicador:object;
   indicadorSerie:Object;
+  spinner:boolean;
   indicadores:object=[
     { codigo:'uf' },
     { codigo:'ivp' },
@@ -28,15 +28,15 @@ export class IndicadoresComponent implements OnInit  {
   constructor(private apiIndicador:ApiIndicadorService) { }
 
   ngOnInit() {
-
+    
   }
 
   getIndicador(indicador){
+    this.spinner = true;
     this.apiIndicador.getIndicador(indicador).subscribe((data:any)=>{
       this.indicador = data;
       this.indicadorSerie = data.serie;
-      console.log(data);    
-      console.log(data.serie)
+      this.spinner=false;
     }
     )
   }
@@ -44,6 +44,6 @@ export class IndicadoresComponent implements OnInit  {
   consultar(forma:NgForm){
     //console.log(forma.value.indicadores)
     this.getIndicador(forma.value.indicadores);
-    this.indicadorSerie=""
+
   }
 }

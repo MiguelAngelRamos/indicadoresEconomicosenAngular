@@ -1,33 +1,12 @@
-<form (ngSubmit)="consultar(forma)" #forma='ngForm' action="">
+<form (ngSubmit)="consultar(forma)" #forma='ngForm'>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Seleccione el indicador</label>
-    <select [(ngModel)]="indicador" class="form-control" id="exampleFormControlSelect1" name="indicadores">
+    <label for="exampleFormControlSelect1"><h2>Seleccione el indicador</h2></label>
+    <select ngModel class="form-control"  name="indicadores">
       <option  *ngFor="let ind of indicadores" [value]="ind.codigo">{{ ind.codigo }}</option>
     </select>
   </div>
 
   <button type="submit" class="btn btn-primary">Consultar</button>
-
 </form>
-
-
-<div *ngIf="indicadorSerie" class="container mt-5">
-  <div class="container">
-    <h6>Indicador: {{indicador.codigo}}</h6>
-    <h6>Unidad de medida: {{indicador.unidad_medida}}</h6>
-  </div>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Fecha</th>
-        <th scope="col">Valor</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ind of indicadorSerie">
-        <th scope="row">{{ ind.fecha | date}}</th>
-        <td>{{ ind.valor}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<app-spinner *ngIf="spinner"></app-spinner>
+<app-table-indicador *ngIf="indicador && indicadorSerie && !spinner" [ind]="indicador" [indSerie]="indicadorSerie"></app-table-indicador>

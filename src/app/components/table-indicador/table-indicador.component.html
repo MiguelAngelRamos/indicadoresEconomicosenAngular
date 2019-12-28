@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h5>Indicador: {{ind.codigo}}</h5>
+  <h5>Unidad de medida: {{ind.unidad_medida}}</h5>
+</div>
+
+<div class="container mt-5">
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let indi of indSerie">
+        <th scope="row">{{ indi.fecha | date}}</th>
+        <td>{{ indi.valor}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
